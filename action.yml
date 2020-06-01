@@ -1,10 +1,9 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Setup BYU Maven'
+description: 'Setups BYU Maven environment including settings.xml file'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  maven-master-password:
+    description: 'Master password for settings-security.xml file'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
