@@ -367,13 +367,18 @@ function run() {
             });
             const homeDir = process.env['HOME'] || '/home/runner';
             const mavenHome = path.join(homeDir, '.m2');
+            fs.mkdirSync(mavenHome);
+            core.debug(`Created maven home as '${mavenHome}'`);
             const mavenSettingsUrl = 'https://byu-oit.github.io/byu-apps-custom-cicd-resources/maven-settings.xml';
             const resp = yield http.get(mavenSettingsUrl);
-            fs.mkdirSync(mavenHome);
-            fs.writeFileSync(path.join(mavenHome, 'settings.xml'), yield resp.readBody());
+            core.debug('Downloaded maven-settings.xml file');
+            const mavenSettingsFilePath = path.join(mavenHome, 'settings.xml');
+            fs.writeFileSync(mavenSettingsFilePath, yield resp.readBody());
+            core.debug(`Wrote contents of downloaded maven-settings.xml to ${mavenSettingsFilePath}`);
             const mavenSecuritySettings = `<settingsSecurity><master>${masterPassword}</master></settingsSecurity>`;
-            fs.writeFileSync(path.join(mavenHome, 'settings-security.xml'), mavenSecuritySettings);
-            core.debug(new Date().toTimeString());
+            const mavenSecuritySettingsFilePath = path.join(mavenHome, 'settings-security.xml');
+            fs.writeFileSync(mavenSecuritySettingsFilePath, mavenSecuritySettings);
+            core.debug(`Added ${mavenSecuritySettingsFilePath}`);
         }
         catch (error) {
             core.setFailed(error.message);
