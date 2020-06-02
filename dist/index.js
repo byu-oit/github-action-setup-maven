@@ -366,6 +366,7 @@ function run() {
             });
             const mavenSettingsUrl = 'https://byu-oit.github.io/byu-apps-custom-cicd-resources/maven-settings.xml';
             const resp = yield http.get(mavenSettingsUrl);
+            fs.mkdirSync('~/.m2');
             fs.writeFileSync('~/.m2/settings.xml', yield resp.readBody());
             core.debug(new Date().toTimeString());
         }
