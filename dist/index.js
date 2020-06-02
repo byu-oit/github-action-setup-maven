@@ -354,6 +354,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const httpm = __importStar(__webpack_require__(539));
 const fs = __importStar(__webpack_require__(747));
+const path = __importStar(__webpack_require__(622));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -364,10 +365,11 @@ function run() {
                 allowRetries: true,
                 maxRetries: 3
             });
+            const mavenHome = path.join('/home', '.m2');
             const mavenSettingsUrl = 'https://byu-oit.github.io/byu-apps-custom-cicd-resources/maven-settings.xml';
             const resp = yield http.get(mavenSettingsUrl);
-            fs.mkdirSync('~/.m2');
-            fs.writeFileSync('~/.m2/settings.xml', yield resp.readBody());
+            fs.mkdirSync(mavenHome);
+            fs.writeFileSync(path.join(mavenHome, 'settings.xml'), yield resp.readBody());
             core.debug(new Date().toTimeString());
         }
         catch (error) {
