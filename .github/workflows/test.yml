@@ -18,11 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: ls -al ~/
-    - run: ls -al $HOME/
-    - run: echo $HOME
-    - run: cd ~/ && pwd
     - uses: ./
       with: 
         maven-master-password: fake-master-password
     - run: cat $HOME/.m2/settings.xml
+    - run: cat $HOME/.m2/settings-security.xml

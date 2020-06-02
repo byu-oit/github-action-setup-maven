@@ -358,9 +358,9 @@ const path = __importStar(__webpack_require__(622));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            // const masterPassword: string = core.getInput('maven-master-password', {
-            //   required: true
-            // })
+            const masterPassword = core.getInput('maven-master-password', {
+                required: true
+            });
             const http = new httpm.HttpClient('setup-maven', undefined, {
                 allowRetries: true,
                 maxRetries: 3
@@ -371,6 +371,8 @@ function run() {
             const resp = yield http.get(mavenSettingsUrl);
             fs.mkdirSync(mavenHome);
             fs.writeFileSync(path.join(mavenHome, 'settings.xml'), yield resp.readBody());
+            const mavenSecuritySettings = `<settingsSecurity><master>${masterPassword}</master></settingsSecurity>`;
+            fs.writeFileSync(path.join(mavenHome, 'settings-security.xml'), mavenSecuritySettings);
             core.debug(new Date().toTimeString());
         }
         catch (error) {

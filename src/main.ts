@@ -5,9 +5,9 @@ import * as path from 'path'
 
 async function run(): Promise<void> {
   try {
-    // const masterPassword: string = core.getInput('maven-master-password', {
-    //   required: true
-    // })
+    const masterPassword: string = core.getInput('maven-master-password', {
+      required: true
+    })
 
     const http = new httpm.HttpClient('setup-maven', undefined, {
       allowRetries: true,
@@ -22,6 +22,11 @@ async function run(): Promise<void> {
     fs.writeFileSync(
       path.join(mavenHome, 'settings.xml'),
       await resp.readBody()
+    )
+    const mavenSecuritySettings = `<settingsSecurity><master>${masterPassword}</master></settingsSecurity>`
+    fs.writeFileSync(
+      path.join(mavenHome, 'settings-security.xml'),
+      mavenSecuritySettings
     )
     core.debug(new Date().toTimeString())
   } catch (error) {
