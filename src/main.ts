@@ -13,7 +13,8 @@ async function run(): Promise<void> {
       allowRetries: true,
       maxRetries: 3
     })
-    const mavenHome = path.join('~', '.m2')
+    const homeDir = process.env['HOME'] || '/home/runner'
+    const mavenHome = path.join(homeDir, '.m2')
     const mavenSettingsUrl =
       'https://byu-oit.github.io/byu-apps-custom-cicd-resources/maven-settings.xml'
     const resp = await http.get(mavenSettingsUrl)

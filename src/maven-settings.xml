@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <pluginGroups>
+        <pluginGroup>org.apache.maven.plugins</pluginGroup>
+        <pluginGroup>org.codehaus.mojo</pluginGroup>
+        <pluginGroup>edu.byu.plugins</pluginGroup>
+    </pluginGroups>
+    <servers>
+        <server>
+            <username>cicd-tools</username>
+            <password>{P3LOpf062egHS7x2TAnRzglquSSjVwqablI5DiVhQpcqD2kDbLm5Ks5QgC/ct3A/}</password>
+            <id>central</id>
+        </server>
+        <server>
+            <username>cicd-tools</username>
+            <password>{P3LOpf062egHS7x2TAnRzglquSSjVwqablI5DiVhQpcqD2kDbLm5Ks5QgC/ct3A/}</password>
+            <id>snapshots</id>
+        </server>
+        <server>
+            <username>cicd-tools</username>
+            <password>{P3LOpf062egHS7x2TAnRzglquSSjVwqablI5DiVhQpcqD2kDbLm5Ks5QgC/ct3A/}</password>
+            <id>thirdparty</id>
+        </server>
+    </servers>
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>byu-apps-custom-repo</name>
+                    <url>https://artifactory.byu.edu/artifactory/byu-apps-custom-repo</url>
+                </repository>
+                <repository>
+                    <snapshots />
+                    <id>snapshots</id>
+                    <name>byu-apps-custom-repo</name>
+                    <url>https://artifactory.byu.edu/artifactory/byu-apps-custom-repo</url>
+                </repository>
+                <repository>
+                    <snapshots />
+                    <id>thirdparty</id>
+                    <name>thirdparty</name>
+                    <url>https://artifactory.byu.edu/artifactory/thirdparty</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>byu-apps-custom-plugins-repo</name>
+                    <url>https://artifactory.byu.edu/artifactory/byu-apps-custom-plugins-repo</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <snapshots />
+                    <id>snapshots</id>
+                    <name>byu-apps-custom-plugins-repo</name>
+                    <url>https://artifactory.byu.edu/artifactory/byu-apps-custom-plugins-repo</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <snapshots />
+                    <id>thirdparty</id>
+                    <name>thirdparty</name>
+                    <url>https://artifactory.byu.edu/artifactory/thirdparty</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>artifactory</id>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>artifactory</activeProfile>
+    </activeProfiles>
+</settings>
