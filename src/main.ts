@@ -15,7 +15,7 @@ async function run(): Promise<void> {
     const mavenSettingsUrl =
       'https://byu-oit.github.io/byu-apps-custom-cicd-resources/maven-settings.xml'
     const resp = await http.get(mavenSettingsUrl)
-    fs.writeFileSync('$HOME/.m2/settings.xml', await resp.readBody())
+    fs.writeFileSync('~/.m2/settings.xml', await resp.readBody())
     core.debug(new Date().toTimeString())
   } catch (error) {
     core.setFailed(error.message)
