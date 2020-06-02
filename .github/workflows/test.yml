@@ -19,6 +19,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: ls -al ~/
+    - run: ls -al $HOME/
+    - run: echo $HOME
+    - run: cd ~/ && pwd
     - uses: ./
       with: 
         maven-master-password: fake-master-password
