@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: which mvn
     - uses: ./
       with: 
         maven-master-password: fake-master-password
+    - run: cat $HOME/.m2/settings.xml
