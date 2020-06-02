@@ -66,8 +66,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 function run() {
     try {
-        const masterPassword = core.getInput('maven-master-password');
-        core.debug(`Got input master password ${masterPassword}`); // TODO remove
+        // const masterPassword: string = core.getInput('maven-master-password', {
+        //   required: true
+        // })
+        const mavenHome = process.env['MAVEN_HOME'] || '';
+        core.debug(`mavenHome ${mavenHome}`);
         core.debug(new Date().toTimeString());
     }
     catch (error) {
