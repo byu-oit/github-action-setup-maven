@@ -16,8 +16,12 @@ async function run(): Promise<void> {
 
     const homeDir = process.env['HOME'] || '/home/runner'
     const mavenHome = path.join(homeDir, '.m2')
-    fs.mkdirSync(mavenHome)
-    core.debug(`Created maven home as '${mavenHome}'`)
+    if (!fs.existsSync(mavenHome)) {
+      fs.mkdirSync(mavenHome)
+      core.debug(`Created maven home as '${mavenHome}'`)
+    } else {
+      core.debug(`Maven home already exists '${mavenHome}'`)
+    }
 
     const mavenSettingsUrl =
       'https://byu-oit.github.io/byu-apps-custom-cicd-resources/maven-settings.xml'
