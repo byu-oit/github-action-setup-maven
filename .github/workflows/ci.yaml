@@ -75,14 +75,3 @@ jobs:
 
       - name: yarn test
         run: yarn test
-
-  test-action: # make sure the action works on a clean machine without building
-    name: Test normal use
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: ./
-        with:
-          maven-master-password: fake-master-password
-      - run: cat $HOME/.m2/settings.xml
-      - run: cat $HOME/.m2/settings-security.xml
