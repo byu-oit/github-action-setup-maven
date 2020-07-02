@@ -1,6 +1,5 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="github-action-setup-maven status" src="https://github.com/byu-oit/github-action-setup-maven/workflows/build-test/badge.svg"></a>
-</p>
+![CI](https://github.com/byu-oit/github-action-setup-maven/workflows/CI/badge.svg)
+![Test](https://github.com/byu-oit/github-action-setup-maven/workflows/Test/badge.svg)
 
 # ![BYU logo](https://www.hscripts.com/freeimages/logos/university-logos/byu/byu-logo-clipart-128.gif) github-action-setup-maven
 A GitHub Action for setting up a workflow to use BYU's maven environment
