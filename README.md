@@ -19,7 +19,7 @@ jobs:
     steps:
     # ... 
     - name: Setup Maven
-      uses: byu-oit/github-action-codedeploy@v1
+      uses: byu-oit/github-action-setup-maven@v1
       with:
         maven-master-password: ${{ secrets.maven_master_password }}
     - run: mvn install
@@ -38,7 +38,7 @@ jobs:
     steps:
     # ... 
     - name: Setup Maven
-      uses: byu-oit/github-action-codedeploy@v1
+      uses: byu-oit/github-action-setup-maven@v1
       with:
         maven-master-password: ${{ secrets.maven_master_password }}
     - name: Caching Maven
