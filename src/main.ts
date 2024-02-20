@@ -41,7 +41,7 @@ async function run(): Promise<void> {
     )
     fs.writeFileSync(mavenSecuritySettingsFilePath, mavenSecuritySettings)
     core.debug(`Added ${mavenSecuritySettingsFilePath}`)
-  } catch (error) {
+  } catch (error: any) {
     core.setFailed(error.message)
   }
 }
